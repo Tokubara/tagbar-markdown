@@ -7,7 +7,7 @@ echo <<<EOL
 !_TAG_PROGRAM_AUTHOR lvht /git@lvht.net/'
 !_TAG_PROGRAM_NAME mdctags //'
 !_TAG_PROGRAM_URL https://github.com/lvht/tagbar-markdown /official site/'
-!_TAG_PROGRAM_VERSION 0.1.0 //'
+!_TAG_PROGRAM_VERSION 0.1.0 //\n
 EOL;
 }
 if (isset($argv[1])) {
@@ -52,15 +52,18 @@ $plevel = $level > 1 ? $level - 1 : 0;
 $parent = $stack[1];
 $plevel = $parent['level'];
 }
-$scope = $scopesStr ? "h$plevel:$scopesStr" : '';
-$type = chr(0x60 + $level);
+/* $scope = $scopesStr ? "h$plevel:$scopesStr" : ''; */
+$scope = $scopesStr ? "h:$scopesStr" : '';
+/* $type = chr(0x60 + $level); */
+$type = "g";
 if (isset($argv[2])) {
 if ($level > 1) {
 $title = $matches[2];
 echo str_pad('', strlen($matches[1])-$greatest_parent_level, ' ')."- [$title](#$title)\n";
 }
 } else {
-echo "$title\t$path\t/^$anchor\$/;\"\t$type\tline:$lineNo\t$scope\n";
+/* echo str_pad('', (strlen($matches[1])-$greatest_parent_level)*4, ' ')."$title\t$path\t/^$anchor\$/;\"\t$type\tline:$lineNo\n"; */
+  echo "$title\t$path\t/^$anchor\$/;\"\t$type\tline:$lineNo\t$scope\n";
 }
 }
 }
