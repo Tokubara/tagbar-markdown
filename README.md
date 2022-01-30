@@ -1,28 +1,10 @@
-# tagbar markdown extension
-
-### Intro
-tagbar-markdown is a tagbar extension for markdown.
-
-### Screenshot
-![2017-02-01_1359x723](https://cloud.githubusercontent.com/assets/13142418/22514376/12f8a792-e8da-11e6-9897-fb0136732a31.png)
-
-### Install
-- [vim-plug]
-```viml
-Plug 'majutsushi/tagbar'
-Plug 'lvht/tagbar-markdown'
+本fork是为了解决这个问题: 在原repo中, 不同级别的标题, 排序一定是先h1, 再h6, 与原文的排序可能并不一致.
+比如
+```markdown
+### heading1
+## heading2
 ```
-- Use [dein.vim] to lazy load plugin, and check the requirements.
-```viml
-call dein#add('', {'on_cmd' : 'TagbarToggle'})
-call dein#add('', {'on_ft' : 'markdown', 'if' : executable('php')})
-```
+那么原repo排序一定是先heading2, 再heading1.
+本文不区分不同级别的标题, 为了保持与原文顺序一样, 这样相对于是markdown的outline.
+![example](image/example.png)
 
-Please make sure **php** is in your `$PATH` and the `bin/mdctags` has execute permission.
-
-execute ':MDAgenda' to insert content agenda in the current line.
-
-Enjoy :)
-
-[vim-plug]: https://github.com/junegunn/vim-plug
-[dein.vim]: https://github.com/Shougo/dein.vim
